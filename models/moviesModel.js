@@ -1,16 +1,42 @@
-export const categories = Object.freeze({
-  drama: "Drama",
-  action: "Action",
-  crime: "Crime",
-  biography: "Biography",
-  adventure: "Adventure",
-  comedy: "Comedy",
+const { Schema, default: mongoose } = require("mongoose");
+
+
+const movieSchema = new Schema({
+  titulo: {
+    type: String,
+    required: [true, 'el título es requerido']
+  },
+  director: {
+    type: String,
+  },
+  actors: {
+    type: String,
+  },
+  year: {
+    type: Number,
+  },
+  category: {
+    type: String,
+  },
+  rating: {
+    type: Number,
+  },
+  createAt: {
+    type: Date, 
+    default: Date.now()
+  }
 });
 
-export const movies = [
+const ModelMovie = mongoose.model('movie', movieSchema, 'movie')
+
+module.exports = ModelMovie;
+
+/*
+
+const moviesModel = [
   {
-    id:1,
-    title: "Fight Club",
+    id: 1,
+    titulo: "Fight Club",
     director: "David Fincher",
     actors: "Brad Pitt, Edward Norton, Helena Bonham Carter",
     year: 1999,
@@ -18,11 +44,10 @@ export const movies = [
       "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
     category: "Drama",
     rating: 8.8,
-    
   },
   {
-    id:2,
-    title: "The Dark Knight",
+    id: 2,
+    titulo: "The Dark Knight",
     director: "Christopher Nolan",
     actors: "Christian Bale, Heath Ledger, Aaron Eckhart",
     year: 2008,
@@ -32,8 +57,8 @@ export const movies = [
     rating: 9,
   },
   {
-    id:3,
-    title: "Pulp Fiction",
+    id: 3,
+    titulo: "Pulp Fiction",
     director: "Quentin Tarantino",
     actors: "Samuel L. Jackson, Uma Thurman, Bruce Willis",
     year: 1994,
@@ -43,8 +68,8 @@ export const movies = [
     rating: 8.9,
   },
   {
-    id:4,
-    title: "Schindler's List",
+    id: 4,
+    titulo: "Schindler's List",
     director: "Steven Spielberg",
     actors: "Liam Neeson, Ralph Fiennes, Ben Kingsley",
     year: 1993,
@@ -54,8 +79,8 @@ export const movies = [
     rating: 8.9,
   },
   {
-    id:5,
-    title: "The Lord of theRing: The Return of the King",
+    id: 5,
+    titulo: "The Lord of theRing: The Return of the King",
     director: "Peter Jackson",
     actors: "Elijah Wood, Viggo Mortensen, Ian McKellen",
     year: 2003,
@@ -65,8 +90,8 @@ export const movies = [
     rating: 8.9,
   },
   {
-    id:6,
-    title: "The Social Network",
+    id: 6,
+    titulo: "The Social Network",
     director: "David Fincher",
     actors: "Jesse Eisenberg, Andrew Garfield, Justin Timberlake",
     year: 2010,
@@ -74,6 +99,9 @@ export const movies = [
       "Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, but is later sued by two brothers who claimed he stole their idea, and the co-founder who was later squeezed out of the business.",
     category: "Biography",
     rating: 7.7,
-  }
-
+  },
 ];
+
+
+module.exports = moviesModel;
+*/
