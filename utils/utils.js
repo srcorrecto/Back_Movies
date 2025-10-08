@@ -12,4 +12,4 @@ const generateToken = (payload, isRefresh) => {
   });
 };
 
-module.export = { generateToken };
+module.exports = { generateToken };

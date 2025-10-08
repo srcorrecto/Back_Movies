@@ -1,8 +1,6 @@
 const ModelUser = require("../models/userModel");
 const bcrypt = require("bcrypt");
-import {generateToken} from '../utils/utils'
-
-
+const { generateToken } = require("../utils/utils");
 
 const signup = async (req, res) => {
   try {
@@ -45,11 +43,11 @@ const login = async (req, res) => {
       role: user.role,
     };
 
-    const token = generateToken(payload, false)
+    const token = generateToken(payload, false);
 
-     const tokenRefresh =  generateToken(payload, true)
+    const tokenRefresh = generateToken(payload, true);
 
-    res.status(200).send({user, token, tokenRefresh });
+    res.status(200).send({ user, token, tokenRefresh });
   } catch (error) {
     return res.status(500).send({ status: "Fallo", error: error.message });
   }
