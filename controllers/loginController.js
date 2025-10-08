@@ -1,6 +1,6 @@
 const ModelUser = require("../models/userModel");
 const bcrypt = require("bcrypt");
-import generateToken from '../utils/utils'
+import {generateToken} from '../utils/utils'
 
 
 
