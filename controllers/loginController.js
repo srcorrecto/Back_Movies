@@ -1,6 +1,8 @@
 const ModelUser = require("../models/userModel");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+import generateToken from '../utils/utils'
+
+
 
 const signup = async (req, res) => {
   try {
@@ -43,13 +45,9 @@ const login = async (req, res) => {
       role: user.role,
     };
 
-    const token = await jwt.sign(payload, process.env.SECRET_TOKEN, {
-      expiresIn: "20min",
-    });
+    const token = generateToken(payload, false)
 
-     const tokenRefresh = await jwt.sign(payload, process.env.SECRET_TOKEN_REFRESH, {
-      expiresIn: "90min",
-    });
+     const tokenRefresh =  generateToken(payload, true)
 
     res.status(200).send({user, token, tokenRefresh });
   } catch (error) {
