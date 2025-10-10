@@ -11,8 +11,8 @@ const allUsers = async (req, res) => {
 
 const userId = async (req, res) => {
   try {
-    const id = req.params.id;
-    const user = await ModelUser.findById(id);
+    const idUser = req.payload._id;
+    const user = await ModelUser.findById(idUser);
 
     if (!user) {
       return res.status(400).send("Usuario no encontrado");
